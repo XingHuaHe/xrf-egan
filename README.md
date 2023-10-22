@@ -79,9 +79,7 @@ The analysis code implemented through Matlab2021b are stored in the analysis fol
 ![Experiment process](./imgs/img.png)
 
 ![Results](./imgs/Fig%207.%20Cu元素XRF基线校准。(a)XRF基线校准局部图.png)
-![Results](./imgs/Fig%208.%20Zn元素XRF基线校准。(a)XRF基线校准局部图.png)
-![Results](./imgs/Fig%209.%20Mn元素XRF基线校准。(a)XRF基线校准局部图.png)
-![Results](./imgs/Fig%2010.%20Cr元素XRF基线校准。(a)XRF基线校准局部图.png)
+
 
 ## Citation
 @article{
