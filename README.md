@@ -1,14 +1,14 @@
 # Title: A new technique for baseline calibration of soil X-ray fluorescence spectrum based on enhanced generative adversarial networks combined with transfer learning
 
 
-## 1. 预训练
-1.如果你是在 slurm 集群进行实验，可以执行以下代码指令进行模型预训练
+## Pre-training
+### 1. If you are conducting pre-training experiments on a slurm cluster, you can execute the following code instructions to pre-train the model.
 ```
 sbatch script_pretrain.sh
 ```
-你可以修改 script_pretrain.sh 脚本文件中的相关参数，包括日志输出的路径，python interpreter 的路径. 记得设置noisy and clean dataset file path.
+You can modify the relevant slurm cluster parameters in the script_pretrain.sh, including the path of the log output and the path of the python interpreter. Remember to set noisy and clean dataset file path in pretrain.py.
 
-2.如果你不是通过 slurm 集群服务器进行训练，你可以通过运行 python 文件进行模型预训练
+### 2. If you are not pre-training through the slurm cluster, you can pre-train the model by running the python file.
 ```
 python3 pretrain.py \
 --noisy-set="your pretraining noisy datas path (.mat)" \
@@ -19,12 +19,12 @@ python3 pretrain.py \
 --positions="the characteristic peak channel of the analyzed element, for example [156, 664, 303, 304, 288, 232, 215, 249]"
 ```
 
-## 2. 微调
-1.如果你是在 slurm 集群进行实验，可以执行以下代码指令进行模型预训练
+## Fine-tuning
+### 1. If you are conducting fine-tuning experiments on a slurm cluster, you can execute the following code instructions to pre-train the model.
 ```
 sbatch script_fine_tuning.sh
 ```
-2.如果你不是通过 slurm 集群服务器进行训练，你可以通过运行 python 文件进行模型预训练
+### 2. If you are not fine-tuning through the slurm cluster, you can fine-tuning the model by running the python file.
 ```
 python3 finetune.py \
 --noisy-set="your pretraining noisy datas path (.mat)" \
@@ -36,8 +36,8 @@ python3 finetune.py \
 --positions="the characteristic peak channel of the analyzed element, for example [156, 664, 303, 304, 288, 232, 215, 249]"
 ```
 
-## 3. 留一交叉验证
-1.如果你想只执行一次实验，通过交叉验证，使用以下指令
+## Leave-one-out cross-validation (LOOC)
+### 1. If you want to do the LOOC experiment only once, use the following command
 ```
 python3 loocv.py \
 --noisy-set="your pretraining noisy datas path (.mat)" \
@@ -49,7 +49,7 @@ python3 loocv.py \
 --positions="the characteristic peak channel of the analyzed element, for example [156, 664, 303, 304, 288, 232, 215, 249]"
 ```
 
-2.如果您想进行 n 次交叉验证实验，以获得多次实验的方差，使用以下指令：
+### 2. If you want to run N times LOOC experiments to get the variance across multiple experiments, use the following command:
 ```
 python3 loocv-n.py \
 --n=5 \
@@ -62,7 +62,31 @@ python3 loocv-n.py \
 --positions="the characteristic peak channel of the analyzed element, for example [156, 664, 303, 304, 288, 232, 215, 249]"
 ```
 
+## Evaluate
+If you have already trained the model, you can load the model, and perform validation analysis using the test dataset. The output results will be saved in the path specified by '--outputs' (/--outputs/test/).
+```
+python3 evaluate.py \
+--noisy-set="your pretraining noisy datas path (.mat)" \
+--clean-set="your pretraining clean datas path (.mat)" \
+--G-pretrained-weight="generator weight file, saved in folder under the pre training output path (/`your project path`/outputs/`***`/pretrain)" \
+--outputs="your output result saved path" \
+```
 
-## 4. Evaluate
+## Analysis
+The analysis code implemented through Matlab2021b are stored in the analysis folder, including $R^2$ and losses, etc.
 
-![流程](./imgs/img.png)
+## Results
+![Experiment process](./imgs/img.png)
+
+![Results](./imgs/Fig%207.%20Cu元素XRF基线校准。(a)XRF基线校准局部图.png)
+![Results](./imgs/Fig%208.%20Zn元素XRF基线校准。(a)XRF基线校准局部图.png)
+![Results](./imgs/Fig%209.%20Mn元素XRF基线校准。(a)XRF基线校准局部图.png)
+![Results](./imgs/Fig%2010.%20Cr元素XRF基线校准。(a)XRF基线校准局部图.png)
+
+## Citation
+@article{
+    title = {A new technique for baseline calibration of soil X-ray fluorescence spectrum based on enhanced generative adversarial networks combined with transfer learning},  
+journal = { Journal of Analytical Atomic Spectrometry },  
+year = { 28 Sep 2023 },  
+doi = { https://doi.org/10.1039/D3JA00235G },  
+author = { Xinghua He, Yanchun Zhao, Fusheng Li }

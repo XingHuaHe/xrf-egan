@@ -4,7 +4,7 @@ load('soil_chz.mat');
 energy = spectrums(:,1:2048);
 contents = spectrums(:,2049:end);
 
-energy_GAN = csvread('D:\OneDriveHXH\OneDrive\hxh\xrf baseline calibration based on XRFEGAN\Energy Analysis\XRF Enhance GAN - Local Loss\experiences\2.真实数据分析实验\exp-4\fine-tuning-cv\cv_genh.csv', 1, 1);
+energy_GAN = csvread('.\fine-tuning-cv\cv_genh.csv', 1, 1);
 
 % 1:Cu 2:Zn 3:Pb 4:As 5:Mn 6:Cr 7:Cd 8:V 9:Mo
 element_type = 6;
@@ -20,8 +20,8 @@ data(:, 9) = contents(:, 42);
 
 if element_type == 1
     % Cu
-    window_low = 229;                 %卡窗左界
-    window_high = 235;                %卡窗右界
+    window_low = 229;                 % Left border of stuck window
+    window_high = 235;                % Right border of stuck window
 elseif element_type == 2
     % Zn
 %     window_low = 242;

@@ -73,7 +73,7 @@ def finetune(args: argparse.ArgumentParser) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--noisy_set', type=str, default="your pretraining noisy datas path (.mat)", help="noisy energy data directory")
-    parser.add_argument('--clean_set', type=str, default="your pretraining noisy datas path (.mat)", help="clean energy data directory")
+    parser.add_argument('--clean_set', type=str, default="your pretraining clean datas path (.mat)", help="clean energy data directory")
     parser.add_argument('--model_name', type=str, default='XRFEGAN', help="energy enchance model name")
     parser.add_argument('--G_pretrained_weight', type=str, default='/`your project path`/outputs/pretrain/weights/g_1000.pt', help='Path to ckpt file to pre-load in training (Def: None).')
     parser.add_argument('--D_pretrained_weight', type=str, default=None, help='Path to ckpt file to pre-load in training (Def: None).')

@@ -14,14 +14,14 @@
 clc; clear; close all;
 % =================================================================================================
 % ========================================== 读取数据 =======================================
-% fileFolder = fullfile('D:\Processing\Energy Analysis\Matlab\土壤\土壤谱图\新建文件夹');
+% fileFolder = fullfile('.\土壤\土壤谱图');
 % dirOutput = dir(fullfile(fileFolder,'*.txt'));
 % filenames = {dirOutput.name};
 % energy = zeros(59,2048);
 % energy_x = 1:2048;
 % % Load all .txt files.
 % for i = 1:59
-%     energy_buff = importdata(strcat('D:\Processing\Energy Analysis\Matlab\土壤\土壤谱图\新建文件夹\' , filenames{i}));
+%     energy_buff = importdata(strcat('.\土壤\土壤谱图\新建文件夹\' , filenames{i}));
 %     if i == 38
 %         energy(i,:) = energy_buff(:,1)';
 %     else
